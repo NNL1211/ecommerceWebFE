@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="100" viewBox="0 0 250 100">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 62.5px;
+        fill: #020202;
+        font-family: "TLM July it";
+      }
+    </style>
+  </defs>
+  <text id="_neaker" data-name="$neaker" class="cls-1" x="10.75" y="80.75">$neaker</text>
+</svg>
