@@ -509,7 +509,7 @@ form a{
 /************************ ShopPage *********************************/
 
 .shoppage{
-  height: 130vh;
+  /* height: 120vh; */
   overflow-y: auto;
   /* border: 1px solid red; */
   margin-top: 99px;
@@ -572,8 +572,9 @@ form a{
 /************************ AdminPage *********************************/
 .admin--page--create{
   margin-top: 99px;
-  height: 110vh;
-  overflow-y: auto;
+  /* height: 110vh; */
+  /* overflow-y: auto; */
+  margin-bottom: 20px;
 }
 .admin--page{
   margin-top: 99px;

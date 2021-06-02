@@ -35,7 +35,7 @@ useEffect(() => {
     return (
         <>
         <Navbar2/>
-        <div className="container-fluid admin--page">
+        <div className="container-fluid admin--page--create">
         <div className="row">
           <div className="col-md-3 pt-2">
             <AdminSideBar />
