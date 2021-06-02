@@ -142,7 +142,6 @@ const AccountPage = () => {
                       render={(renderProps) => (
                         <button
                           onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}
                         >
                           <img src={icongg}/>
                         </button>

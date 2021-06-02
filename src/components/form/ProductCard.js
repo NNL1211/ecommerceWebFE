@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Tooltip } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { toast } from "react-toastify";
 import sneaker from '../../img/defaultimage.jpeg'
 import { Link } from "react-router-dom";
 import 'antd/dist/antd.css';
@@ -42,7 +43,9 @@ const ProductCard = ({ product }) => {
           type: "SET_VISIBLE",
           payload: true,
       });
+      toast.success(`Added`);
         }
+        
       };
     return (
     <>

@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="d-flex">
-              <h6 style={{color:"#f4f4f4"}}>Service & Support</h6>
+              <h6 style={{color:"#191919"}}>Service & Support</h6>
             </div>
             <div className="d-flex">
               <a href="tel:555-555-555">999-999-999</a>

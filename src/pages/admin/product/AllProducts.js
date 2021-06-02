@@ -15,8 +15,16 @@ const AllProducts = () => {
   const loading = useSelector((state) => state.product.loading);
   console.log(productlist)
   useEffect(()=>{
-    dispatch(ProductActions.getAllProducts(1));
+    dispatch(ProductActions.getAllProducts(currentPage));
 },[])
+useEffect(() => {
+  if(productlist && productlist.data){
+      console.log("this is productdata",productlist)
+      
+      setTotalPage(productlist.data.totalPages)
+  }
+
+}, [productlist]);
     const handleRemove = (id) => {
     // let answer = window.confirm("Delete?");
     if (window.confirm("Delete?")) {
@@ -29,10 +37,10 @@ const AllProducts = () => {
         <Navbar2/>
         <div className="container-fluid admin--page">
         <div className="row">
-          <div className="col-md-2 pt-2">
+          <div className="col-md-3 pt-2">
             <AdminSideBar />
           </div>
-          <div className="col-md-10 pt-2">
+          <div className="col-md-9 pt-2">
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
             ) : (
@@ -40,7 +48,7 @@ const AllProducts = () => {
               )}
           <div className="row pb-5">
             {productlist && productlist.data.products.map((product) => (
-              <div key={product._id} className="col">
+              <div key={product._id} className="col-md-4">
                 <AdminProductCard product={product} handleRemove={handleRemove}/>
               </div>
             ))}</div>

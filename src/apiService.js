@@ -30,9 +30,10 @@ api.interceptors.response.use(
   function (error) {
     error = error.response.data;
     console.log("RESPONSE ERROR", error);
-    console.log(error.errors)
-    let errorMsg = error.error || "";
-    if (error.errors.length){
+    // console.log(error.errors)
+    // let errorMsg = error.error || "";
+    toast.error(error.error);
+    if (error.errors.length>0){
       let errorMsgArray = error.errors
       let errorMsgMap="";
       errorMsgArray.map((er)=>{
@@ -40,9 +41,6 @@ api.interceptors.response.use(
       })
       // errorMsg = errorMsgMap;
       toast.error(errorMsgMap);
-    }
-    if(!error.errors.length){
-      toast.error(errorMsg);
     }
     
     return Promise.reject(error);

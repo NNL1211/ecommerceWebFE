@@ -45,7 +45,7 @@ const CartPage = () => {
     return (
     <>
     <Navbar2/>
-    <div className="container pt-2 user--page">
+    <div className="container-fluid pt-2 user--page">
         <div className="row">
           <div className="col-md-8">
             <h4>Cart / {cart.length} Product</h4>

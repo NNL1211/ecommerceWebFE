@@ -503,7 +503,7 @@ form a{
 .under{
   padding-top: 100px;
   height: 100vh;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /************************ ShopPage *********************************/
@@ -570,6 +570,11 @@ form a{
 
 
 /************************ AdminPage *********************************/
+.admin--page--create{
+  margin-top: 99px;
+  height: 110vh;
+  overflow-y: auto;
+}
 .admin--page{
   margin-top: 99px;
   height: 100vh;
@@ -590,17 +595,10 @@ form a{
 
 
 /************************ HomePage *********************************/
-/* .small-container{
-  max-width: 1080px;
-  margin: auto;
-  padding-left: 25px;
-  padding-right: 25px;
-} */
 
 .col-md-3{
-  flex-basis: 30%;
+  transition: transform 0.5s;
   min-width: 250px;
-  margin-bottom: 30px;
 }
 .col-md-3 img{
   width: 100%
@@ -627,9 +625,8 @@ form a{
 }
 
 .col-md-4{
-  flex-basis: 25%;
   padding: 10px;
-  min-width: 200px;
+  /* min-width: 200px; */
   margin-bottom: 50px;
   transition: transform 0.5s;
 }
@@ -650,7 +647,7 @@ form a{
 
 
 .col-md-3:hover{
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 
 /********** HomePage testtimonial *********/

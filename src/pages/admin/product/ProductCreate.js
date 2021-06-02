@@ -72,7 +72,7 @@ const ProductCreate = () => {
     return (
         <>
         <Navbar2/>
-        <div className="container-fluid admin--page">
+        <div className="container-fluid admin--page--create">
         <div className="row">
           <div className="col-md-3 pt-2">
           <AdminSideBar />
@@ -84,9 +84,10 @@ const ProductCreate = () => {
 
             <hr />
             {/* {JSON.stringify(values.categories)} */}
-            <div className="p-3">
+            <div className="p-4">
             <FileUpload values={values} setValues={setValues} loading={loading} />
             </div>
+            <div className="container-fluid">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Title</label>
@@ -195,6 +196,7 @@ const ProductCreate = () => {
                     
               <button className="btn btn-outline-info">Save</button>
             </form>
+            </div>
           </div>
         </div>
       </div>

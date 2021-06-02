@@ -109,9 +109,9 @@ const ProductCardInCheckout = ({ p }) => {
         <td>
           <select
             onChange={handleSizeChange}
-            // name="color"
             name="size"
             className="form-control"
+            style={{width:"5.2vw"}}
           >
             {p.size ? (<option value={p.size}>{p.size}</option>):(<option>Select</option>)}
             {sizes.filter((c) => c !== p.size).map((c) => (

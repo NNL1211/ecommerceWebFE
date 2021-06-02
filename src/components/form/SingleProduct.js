@@ -12,7 +12,7 @@ import SingleProductList from "./SingleProductList";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import { Button } from "react-bootstrap";
-
+import { toast } from "react-toastify";
 
 // const { Meta } = Card;
 
@@ -54,6 +54,7 @@ const SingleProduct = ({ values }) => {
         type: "SET_VISIBLE",
         payload: true,
       });
+      toast.success(`Added`);
     }
   };
 

@@ -43,7 +43,7 @@ const HomePage = () => {
   // console.log(productlist)
   useEffect(()=>{
       dispatch(ProductActions.getAllProducts(1));
-      dispatch(categoryActions.getSingleCategory("newest"))
+      dispatch(categoryActions.getSingleCategory("basketball"))
   },[])
   useEffect(() => {
     if(categoryData && categoryData.data){
