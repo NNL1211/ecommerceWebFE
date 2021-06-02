@@ -55,7 +55,7 @@ useEffect(()=>{
 useEffect(() => {
     dispatch(ProductActions.getSingleProduct(id))
     dispatch(ProductActions.getRelated(id))
-  }, []);
+  }, [id]);
     return (
       <>
       <Navbar2/>
@@ -64,10 +64,14 @@ useEffect(() => {
           <SingleProduct values={values } />
         </div>
   
-        <div className="row pb-5">
+        {/* <hr/> */}
+        <div className="text-center jumbotron">
+        <h2 >Related Products</h2>
+        </div>
+        <div className="row pb-5 container">
         {related.length ? (
           related.map((r) => (
-            <div key={r._id} className="col-md-4">
+            <div key={r._id} className="col-md-3 mt-3">
               <ProductCard product={r} />
             </div>
           ))

@@ -1,20 +1,57 @@
 import React, { useEffect,useState } from 'react'
 // import { Container,Row,CardColumns, Col,Card} from 'react-bootstrap';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import { useDispatch, useSelector } from "react-redux";
 import {ProductActions} from "../redux/actions/product.action"
+import { categoryActions } from "../redux/actions/category.action";
 import Header from "../components/Header";
 import ProductCard from "../components/form/ProductCard";
+import user1 from "../images/user-1.png"
+import user2 from "../images/user-2.png"
+import user3 from "../images/user-3.png"
+
 const HomePage = () => {
-  
+  const [category, setCategory] = useState({});
+  const [productwithcategory,setProductwithcategory ] = useState([]);
+  console.log(productwithcategory)
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.product.loading);
   const productlist = useSelector((state)=>state.product.products.data)
+  const categoryData= useSelector((state)=>state.category.singleCategory.data)
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   // console.log(productlist)
   useEffect(()=>{
       dispatch(ProductActions.getAllProducts(1));
+      dispatch(categoryActions.getSingleCategory("newest"))
   },[])
+  useEffect(() => {
+    if(categoryData && categoryData.data){
+     setCategory(categoryData.data.category)
+     setProductwithcategory(categoryData.data.products)
+    }
+   }, [categoryData]);
+
   useEffect(()=>{
     if(productlist && productlist.data.products ){
       setProducts(productlist.data.products)
@@ -23,19 +60,65 @@ const HomePage = () => {
     return (
         <>
         <Header/>
-        <div className="jumbotron text-center">
-        {loading ? <h4>Loading...</h4> : <h2>New Arrivals</h2>}
+        <div className="container-fluid text-center container">
+        {loading ? <h4>Loading...</h4> : <h2 className="title">Best For You</h2>}
+        
+        <div className="container">
+        <Carousel 
+        responsive={responsive}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        infinite={true}
+        >
+          {products.map((product) => (
+          <div className="col-md-3 mt-3" key={product._id}>
+            <Link to={`/product/${product._id}`}>
+            <img src={product.images[0].url}></img>
+            <h4 className="titleh4">{product.title}</h4>
+            <p>${product.price}</p>
+          </Link>
+          </div>
+          ))}
+          </Carousel>
+        </div> 
+        <h2 className="title">Latest Products</h2>
+        <div className="row">
+        {productwithcategory.map((product) => (
+          <div className="col-md-3 mt-3" key={product._id}>
+            <Link to={`/product/${product._id}`}>
+            <img src={product.images[0].url}></img>
+            <h4 className="titleh4">{product.title}</h4>
+            <p>${product.price}</p>
+          </Link>
+          </div>
+        ))}
         </div>
 
+        </div>
+        <div className="testimonial">
         <div className="container">
         <div className="row">
-          {products.map((product) => (
-            <div key={product._id} className="col-md-4">
-              <ProductCard product={product} />
-            </div>
-          ))}
+        <div className="col-md-4">
+        <i className="fa fa-quote-left"></i>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        <img src={user1}></img>
+        <h3>Sean Parker</h3>
         </div>
-        </div> 
+        <div className="col-md-4">
+        <i className="fa fa-quote-left"></i>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        <img src={user2}></img>
+        <h3>Mike Smith</h3>
+        </div>
+        <div className="col-md-4">
+        <i className="fa fa-quote-left"></i>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        <img src={user3}></img>
+        <h3>Mike Smith</h3>
+        </div>
+        </div>
+        </div>
+        </div>
         </>
     )
 }

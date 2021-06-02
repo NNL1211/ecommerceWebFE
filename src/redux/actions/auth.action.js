@@ -48,6 +48,7 @@ const loginFacebookRequest = (access_token) => async(dispatch)=>{
   try {
     dispatch({ type: "LOGINFB_REQUEST_START", payload: null });
     const res = await api.post("/auth/login/facebook",{access_token});
+    localStorage.setItem("role", res.data.data.user.role);
     localStorage.setItem("accessToken", res.data.data.accessToken);
     api.defaults.headers["authorization"] =
       "Bearer " + localStorage.getItem("accessToken");
@@ -65,6 +66,7 @@ const loginGoogleRequest = (access_token) => async(dispatch)=>{
   try {
     dispatch({ type: "LOGINGOOGLE_REQUEST_START", payload: null });
     const res = await api.post("/auth/login/google",{access_token});
+    localStorage.setItem("role", res.data.data.user.role);
     localStorage.setItem("accessToken", res.data.data.accessToken);
     api.defaults.headers["authorization"] =
       "Bearer " + localStorage.getItem("accessToken");

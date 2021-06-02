@@ -32,14 +32,19 @@ api.interceptors.response.use(
     console.log("RESPONSE ERROR", error);
     console.log(error.errors)
     let errorMsg = error.error || "";
-    // if (error.errors){
-    //   let errorMsgMap="";
-    //   errorMsg.map((er)=>{
-    //      errorMsgMap += er.msg + ": " ;
-    //   })
-    //   errorMsg = errorMsgMap;
-    // }
-    toast.error(errorMsg);
+    if (error.errors.length){
+      let errorMsgArray = error.errors
+      let errorMsgMap="";
+      errorMsgArray.map((er)=>{
+         errorMsgMap += er.param + ": " +er.msg +" " ;
+      })
+      // errorMsg = errorMsgMap;
+      toast.error(errorMsgMap);
+    }
+    if(!error.errors.length){
+      toast.error(errorMsg);
+    }
+    
     return Promise.reject(error);
   }
 );

@@ -5,7 +5,7 @@ import {cartOrderActions} from "../redux/actions/cartOrder.action"
 // import "react-quill/dist/quill.snow.css";
 import { useHistory } from "react-router";
 import { routeActions } from "../redux/actions/route.action";
-
+import Navbar2 from '../components/Navbar2'
 const CheckoutPage = () => {
 const history = useHistory()
 const redirectTo = useSelector((state) => state.route.redirectTo);
@@ -113,6 +113,9 @@ useEffect(() => {
 // },[orderdata]);
 
   return (
+    <>
+    <Navbar2/>
+    <div className="container pt-2 user--page">
     <div className="row">
     <div className="col-md-6">
       <h4>Delivery Address</h4>
@@ -201,7 +204,8 @@ useEffect(() => {
       </div>
     </div>
   </div>
-
+  </div>
+  </>
   );
 };
 

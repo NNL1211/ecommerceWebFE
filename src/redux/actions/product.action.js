@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const getAllProducts = (currentPage) => async (dispatch) => {
     try {
       dispatch({ type: "PRODUCT_REQUEST_START" });
-      const data = await api.get(`/products?page=${currentPage}&limit=9`);
+      const data = await api.get(`/products?page=${currentPage}&limit=6`);
       dispatch({
         type: "PRODUCT_REQUEST_SUCCESS",
         payload: { data: data, currentPage: currentPage },
@@ -67,7 +67,7 @@ const updateProduct = (values,id) => async (dispatch) => {
 const fetchProductsByFilter = (arg,currentPage) => async (dispatch) => {
   try {
     dispatch({ type: "FILTERPRODUCT_REQUEST_START", payload: null });
-    const data = await api.post(`/products/search/filters?page=${currentPage}&limit=9`,arg);
+    const data = await api.post(`/products/search/filters?page=${currentPage}&limit=6`,arg);
     dispatch({ 
       type: "FILTERPRODUCT_REQUEST_SUCCESS",
       payload: { data: data, currentPage: currentPage }, });

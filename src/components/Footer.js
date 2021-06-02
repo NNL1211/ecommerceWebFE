@@ -12,7 +12,7 @@ import React from "react";
 // } from "react-share";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF,faInstagram,faGithub,faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF,faInstagram,faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="d-flex">
-              <h6 style={{color:"#f4f4f4"}}>Service & Suppor</h6>
+              <h6 style={{color:"#f4f4f4"}}>Service & Support</h6>
             </div>
             <div className="d-flex">
               <a href="tel:555-555-555">999-999-999</a>

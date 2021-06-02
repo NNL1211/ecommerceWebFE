@@ -5,7 +5,7 @@ import { cartOrderActions } from "../redux/actions/cartOrder.action";
 import { Link, useHistory } from "react-router-dom";
 import ProductCardInCheckout from "../components/form/ProductCardInCheckout";
 import { routeActions } from "../redux/actions/route.action";
-
+import Navbar2 from '../components/Navbar2'
 const CartPage = () => {
     const history = useHistory();
     const redirectTo = useSelector((state) => state.route.redirectTo);
@@ -43,7 +43,9 @@ const CartPage = () => {
       });
     };
     return (
-    <div className="container-fluid pt-2">
+    <>
+    <Navbar2/>
+    <div className="container pt-2 user--page">
         <div className="row">
           <div className="col-md-8">
             <h4>Cart / {cart.length} Product</h4>
@@ -77,7 +79,7 @@ const CartPage = () => {
           <div className="col-md-4">
             <h4>Order Summary</h4>
             <hr />
-            <p>Products</p>
+            <p><b>Products</b></p>
             {cart.map((c, i) => (
               <div key={i}>
                 <p>
@@ -120,6 +122,7 @@ const CartPage = () => {
           </div>
         </div>
     </div>
+    </>
     )
 }
 

@@ -81,30 +81,40 @@ const SingleProduct = ({ values }) => {
         <Card cover={<img src={sneaker} className="mb-3 card-image" />}></Card>
       )}
 
+
+    </div>
+
+    <div className="col-md-6 product-info">
+    <SingleProductList values={values} />
+    <br/>
+    <div>
       <Tabs type="card">
           <TabPane tab="Description" key="1">
             {description && description}
           </TabPane>
           <TabPane tab="More" key="2">
-            Call use on xxxx xxx xxx to learn more about this product.
+            Call use on 999 999 899 to learn more about this product.
           </TabPane>
       </Tabs>
     </div>
-
-    <div className="col-md-6 product-info">
-    <SingleProductList values={values} />
-    <div>
+    <br/>
+    <div className="d-flex justify-content-around row">
 
     <Tooltip title={tooltip}>
-              <Button variant="secondary" size="lg" onClick={quantity<1?null:handleAddToCart} disabled={quantity<1}>
+              <Button variant="white" size="lg" onClick={quantity<1?null:handleAddToCart} disabled={quantity<1}>
                 <ShoppingCartOutlined className="text-danger" /> <br /> 
                 {quantity<1?'Out of Stock':'Add to Cart'}
               </Button>
     </Tooltip>
-    <Link to="/" onClick={handleAddToWishlist}>
+    {/* <Link to="/" onClick={handleAddToWishlist}> */}
+    <Button variant="white" size="lg" onClick={handleAddToWishlist}>
               <HeartOutlined className="text-info" /> <br /> Add to Wishlist
-      </Link>,
-    </div>
+              </Button>
+      {/* </Link>, */}
+      </div>
+      
+
+    
     </div>
   </>
   );
