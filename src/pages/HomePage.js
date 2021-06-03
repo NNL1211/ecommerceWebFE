@@ -1,13 +1,15 @@
 import React, { useEffect,useState } from 'react'
 // import { Container,Row,CardColumns, Col,Card} from 'react-bootstrap';
 import { Link } from "react-router-dom";
+// import {Carousel} from'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useDispatch, useSelector } from "react-redux";
 import {ProductActions} from "../redux/actions/product.action"
 import { categoryActions } from "../redux/actions/category.action";
 import Header from "../components/Header";
-import ProductCard from "../components/form/ProductCard";
+import BackGroundHome from '../components/form/BackGroundHome'
+// import ProductCard from "../components/form/ProductCard";
 import user1 from "../images/user-1.png"
 import user2 from "../images/user-2.png"
 import user3 from "../images/user-3.png"
@@ -60,10 +62,10 @@ const HomePage = () => {
     return (
         <>
         <Header/>
-        <div className="container-fluid text-center container">
+        <div className="text-center container-fluid">
         {loading ? <h4>Loading...</h4> : <h2 className="title">Best For You</h2>}
         
-        <div className="container">
+        <div id="explore" className="container">
         <Carousel 
         responsive={responsive}
         autoPlay={true}
@@ -71,16 +73,19 @@ const HomePage = () => {
         infinite={true}
         >
           {products.map((product) => (
-          <div className="col-md-3 mt-3" key={product._id}>
+          <div className="col-md-3 my-5" key={product._id}>
             <Link to={`/product/${product._id}`}>
             <img src={product.images[0].url}></img>
-            <h4 className="titleh4">{product.title}</h4>
+            <p className="titleh4">{product.title}</p>
             <p>${product.price}</p>
           </Link>
           </div>
           ))}
           </Carousel>
         </div> 
+        <div className="container-fluid my-5 row">
+          <BackGroundHome/>
+        </div>
         <h2 className="title">Latest Products</h2>
         <div className="row">
         {productwithcategory.map((product) => (
@@ -95,6 +100,10 @@ const HomePage = () => {
         </div>
 
         </div>
+
+
+
+
         <div className="testimonial">
         <div className="container">
         <div className="row">
@@ -119,6 +128,8 @@ const HomePage = () => {
         </div>
         </div>
         </div>
+        
+
         </>
     )
 }

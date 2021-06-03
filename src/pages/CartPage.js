@@ -92,17 +92,17 @@ const CartPage = () => {
             <hr />
             {isAuth ? (
             <>
-            <button
+            {/* <button
               onClick={saveOrderToDb}
               className="btn btn-sm btn-primary mt-2 p-2"
               disabled={!cart.length}
               >
               Proceed to Checkout
             </button>
-              <br />
+              <br /> */}
               <button
                 onClick={saveCashOrderToDb}
-                className="btn btn-sm btn-info mt-2 p-2"
+                className="btn btn-sm btn-primary mt-2 p-2"
                 disabled={!cart.length}
               >
                 Pay Cash on Delivery

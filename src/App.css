@@ -308,7 +308,8 @@ nav ul li {
   /* background: linear-gradient(to right,#CB9EF6,#0BD1BA); */
   /* background: linear-gradient(to right,#AFF0D0,#9894E1); */
   /* background: linear-gradient(to right,#02B1D0,#ea8185); */
-  background: linear-gradient(to right,#cba6c9,#bccaca);
+  /* background: linear-gradient(to right,#cba6c9,#bccaca); */
+  background: linear-gradient(to left,#d6dbdf,#d4afb2);
   /* background: linear-gradient(#fff,#ffd6d6); */
   background-size: cover;
   background-position: center;

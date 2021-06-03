@@ -59,16 +59,16 @@ useEffect(() => {
     return (
       <>
       <Navbar2/>
-        <div className="container-fluid product--detail--page">
+        <div className="container-fluid  product--detail--page">
         <div className="row pt-4">
           <SingleProduct values={values } />
         </div>
   
         {/* <hr/> */}
-        <div className="text-center jumbotron">
-        <h2 >Related Products</h2>
+        <div className="text-center">
+        <h2 className="title" >Related Products</h2>
         </div>
-        <div className="row pb-5 container">
+        <div className="row pb-5 ">
         {related.length ? (
           related.map((r) => (
             <div key={r._id} className="col-md-3 mt-3">
