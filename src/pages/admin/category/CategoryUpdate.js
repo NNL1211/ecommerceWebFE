@@ -4,7 +4,8 @@ import { useSelector,useDispatch } from "react-redux";
 import {categoryActions} from '../../../redux/actions/category.action'
 import { toast } from "react-toastify";
 import { useHistory, useParams } from 'react-router';
-
+import Navbar2 from "../../../components/Navbar2";
+import AdminSideBar from "../../../components/AdminSideBar";
 const CategoryUpdate = () => {
     const history = useHistory();
     const loading = useSelector((state) => state.category.loading);
@@ -45,12 +46,14 @@ const CategoryUpdate = () => {
         
       }, [categoryBrands]);
     return (
-        <div className="container-fluid">
+        <>
+        <Navbar2/>
+        <div className="container-fluid admin--page">
         <div className="row">
-          <div className="col-md-2">
-            {/* <Navbar2 /> */}
+        <div className="col-md-3 pt-2">
+            <AdminSideBar />
           </div>
-          <div className="col">
+          <div className="col-md-9  pt-2">
             {loading ? (
               <h4 className="text-danger">Loading..</h4>
             ) : (
@@ -75,6 +78,7 @@ const CategoryUpdate = () => {
           </div>
         </div>
       </div>
+      </>
     )
 }
 

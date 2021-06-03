@@ -508,6 +508,10 @@ form a{
 }
 
 /************************ ShopPage *********************************/
+.title--shoppage{
+  color: var(--primary-darkfooter);
+}
+
 
 .shoppage{
   /* height: 120vh; */

@@ -13,7 +13,13 @@ import ClipLoader from "react-spinners/ClipLoader";
 import FileUpload from "../../../components/form/FileUpload";
 import { useParams } from 'react-router';
 
+// const override = css`
+// display: block;
+// margin: 0 auto;
+// border-color: red;
+// `;
 const ProductUpdate = () => {
+
     const {id}=useParams()
     const loading = useSelector((state) => state.cloudinary.loading);
     const categoryBrands = useSelector((state)=>state.category.categories.data)
@@ -91,7 +97,7 @@ const ProductUpdate = () => {
           </div>
 
           <div className="col-md-10">
-              {loading?(<ClipLoader  loading={loading}  size={150} />):(
+              {loading?(<ClipLoader  loading={loading} size={5} />):(
                 <h4>Product update</h4>)}
                 {/* {JSON.stringify(values)} */}
             <hr />

@@ -106,6 +106,7 @@ const HomePage = () => {
 
         <div className="testimonial">
         <div className="container">
+        <h2 className="title">Reviews</h2>
         <div className="row">
         <div className="col-md-4">
         <i className="fa fa-quote-left"></i>

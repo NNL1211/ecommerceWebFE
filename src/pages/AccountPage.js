@@ -29,6 +29,7 @@ const AccountPage = () => {
       name: "",
       email: "",
       password: "",
+      confirmpassword: "",
     });
 
     const loginWithGoogle = (user) => {
@@ -53,7 +54,8 @@ const AccountPage = () => {
       };
     
       const handleSignUpChange = (e) => {
-        setFormSignUp({ ...formSignUp, [e.target.name]: e.target.value });
+          setFormSignUp({ ...formSignUp, [e.target.name]: e.target.value });
+  
       };
 
       const handleSignInSubmit = (e) => {
@@ -66,12 +68,16 @@ const AccountPage = () => {
       const handleSignUpSubmit =  async(e) => {
         e.preventDefault();
         // console.log("env",process.env.REACT_APP_REGISTER_REDIRECT_URL)
-        const config = {
-            url:process.env.REACT_APP_REGISTER_REDIRECT_URL,
-            handleCodeInApp: true,
+        // const config = {
+        //     url:process.env.REACT_APP_REGISTER_REDIRECT_URL,
+        //     handleCodeInApp: true,
+        // }
+        const { name, email, password,confirmpassword } = formSignUp;
+        if(password===confirmpassword){
+          dispatch(authActions.registerUser({ name, email, password }));
+        }else{
+          toast.error('Confirm Password not match')
         }
-        const { name, email, password } = formSignUp;
-        dispatch(authActions.registerUser({ name, email, password }));
         // if(name&&email&&password&&password){
         //     await auth.sendSignInLinkToEmail(email,config)
         //     toast.success(`Email is sent to ${email}, click the link to complete your registration`)
@@ -156,6 +162,7 @@ const AccountPage = () => {
                    <input type="text" name="name" placeholder="Name" onChange={handleSignUpChange}/>
                    <input type="email" name="email" placeholder="Email" onChange={handleSignUpChange}/>
                    <input type="password" name="password" placeholder="Password" onChange={handleSignUpChange}/>
+                   <input type="password" name="confirmpassword" placeholder="Confirm Password" onChange={handleSignUpChange}/>
                    <button type="submit" className="btn-account">Register</button>
                </form>
         </div>
