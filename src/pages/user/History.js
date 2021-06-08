@@ -7,6 +7,9 @@ import {cartOrderActions} from "../../redux/actions/cartOrder.action"
 // import { routeActions } from "../../redux/actions/route.action";
 import ShowPaymentInfo from "../../components/form/ShowPaymentInfo";
 import Navbar2 from "../../components/Navbar2";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Invoice from "../../components/form/Invoice";
+
 const History = () => {
     const dispatch = useDispatch()
     const [orders, setOrders] = useState([]);
@@ -22,6 +25,15 @@ const History = () => {
     }, [ordersdata]);
     
 //-------Show--------------->
+const showDownloadLink = (order) => (
+  <PDFDownloadLink
+    document={<Invoice order={order} />}
+    fileName="invoice.pdf"
+    className="btn btn-sm btn-block btn-outline-primary"
+  >
+    Download PDF
+  </PDFDownloadLink>
+);
 
     const showEachOrders = () =>
     orders.reverse().map((order, i) => (
@@ -29,7 +41,7 @@ const History = () => {
         <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
         <div className="row">
-          {/* <div className="col">{showDownloadLink(order)}</div> */}
+          <div className="col">{showDownloadLink(order)}</div>
         </div>
       </div>
     ));

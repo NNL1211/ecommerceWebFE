@@ -121,7 +121,48 @@ const getUserOrders = () => async (dispatch) => {
     dispatch({ type: "GETUSERORDER_REQUEST_FAIL", payload: error.message });
   }
 };
-  
+
+const createPaymentIntent = (coupon) => async (dispatch) => {
+  try {
+    dispatch({ type: "CREATEPAYMENT_REQUEST_START", payload: null });
+    const data = await api.post(`/users/create-payment-intent`,coupon);
+    // console.log("puish ????")
+  //   toast.success(`"${data.data.data.category.name}}" is created`);
+    dispatch({
+      type: "CREATEPAYMENT_REQUEST_SUCCESS",
+      payload:  data ,
+    });
+  } catch (error) {
+    dispatch({ type: "CREATEPAYMENT_REQUEST_FAIL", payload: error.message });
+  }
+};
+
+const createPaymentOrder = (stripeResponse) => async (dispatch) => {
+  try {
+     
+    dispatch({ type: "CREATEORDER_REQUEST_START", payload: null });
+    const data = await api.post(`/users/payment-order`,stripeResponse);
+     // empty cart from backend
+    dispatch(emptyCart())
+    // empty redux cart
+    dispatch({type: "ADD_TO_CART",payload: [],});
+    // empty redux coupon
+    dispatch({type:"COUPON_APPLIED_FAIL",payload: false})
+     // empty redux COD
+    dispatch({type: "COD",payload: false,});
+    if (typeof window !== "undefined") localStorage.removeItem("cart");
+    toast.success("Order success");
+    // redirect
+    // dispatch(routeActions.redirect("/user/history"));
+    dispatch(getUserOrders());
+    dispatch({
+      type: "CREATEORDER_REQUEST_SUCCESS",
+      payload: data ,
+    });
+  } catch (error) {
+    dispatch({ type: "CREATEORDER_REQUEST_FAIL", payload: error.message });
+  }
+};
 
 
 
@@ -133,4 +174,6 @@ export const cartOrderActions = {
     applyCoupon,
     createCashOrder,
     getUserOrders,
+    createPaymentIntent,
+    createPaymentOrder,
 };

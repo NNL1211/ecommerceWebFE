@@ -52,7 +52,7 @@ const CartPage = () => {
   
             {!cart.length ? (
               <p>
-                No products in cart. <Link to="/shop">Continue Shopping.</Link>
+                No products in cart. <Link to="/products">Continue Shopping.</Link>
               </p>
             ) : (
             <table className="table table-bordered">
@@ -92,14 +92,14 @@ const CartPage = () => {
             <hr />
             {isAuth ? (
             <>
-            {/* <button
+            <button
               onClick={saveOrderToDb}
               className="btn btn-sm btn-primary mt-2 p-2"
               disabled={!cart.length}
               >
               Proceed to Checkout
             </button>
-              <br /> */}
+              <br />
               <button
                 onClick={saveCashOrderToDb}
                 className="btn btn-sm btn-primary mt-2 p-2"

@@ -4,6 +4,8 @@ import AdminSideBar from "../../../components/AdminSideBar";
 import { useSelector,useDispatch } from "react-redux";
 import {ProductActions} from '../../../redux/actions/product.action'
 import {categoryActions} from '../../../redux/actions/category.action'
+import { Importer, ImporterField } from 'react-csv-importer';
+import 'react-csv-importer/dist/index.css';
 // import {cloudinaryActions} from '../../../redux/actions/cloudinary.action'
 // import { toast } from "react-toastify";
 // import { Link } from "react-router-dom";

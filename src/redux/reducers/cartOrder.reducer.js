@@ -3,6 +3,7 @@ const initialState = {
     totalDiscount:[],
     order:[],
     loading: false,
+    paymentIntent:[],
   };
 
 
@@ -16,6 +17,7 @@ const initialState = {
         case "APPLYCOUPON_REQUEST_START":
         case "CREATEORDER_REQUEST_START":
         case "GETUSERORDER_REQUEST_START":
+        case "CREATEPAYMENT_REQUEST_START":
             state.loading = true;
             break;
         case "CREATECART_REQUEST_FAIL":
@@ -25,6 +27,7 @@ const initialState = {
         case "APPLYCOUPON_REQUEST_FAIL":
         case "CREATEORDER_REQUEST_FAIL":
         case "GETUSERORDER_REQUEST_FAIL":
+        case "CREATEPAYMENT_REQUEST_FAIL":
             state.error = payload;
             state.loading = false;
             break;
@@ -53,6 +56,10 @@ const initialState = {
         break;
         case "GETUSERORDER_REQUEST_SUCCESS":
             state.order=payload.data
+            state.loading = false;
+        break;
+        case "CREATEPAYMENT_REQUEST_SUCCESS":
+            state.paymentIntent=payload.data
             state.loading = false;
         break;
 
