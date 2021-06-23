@@ -99,13 +99,15 @@ const Navbar = () => {
             </ul>
             <ul className={`navbar-nav ml-auto ${ status ? "nav--scroll " : ""}`}>
             <li className="nav-item active ">
+            <div>
             <Link to="/cart" className={` nav-link badge--position ${status?"shoppingcart--scroll":"shoppingcart"}`}>
                  
                  <FontAwesomeIcon icon={faShoppingCart} size="2x" />
                  <span className="badge badge-warning">{cart.length}</span>
             </Link>
+            </div>
             </li>
-            <li className="header__right">
+            <li className="header__right nav-item active">
               
                 {isAuth && currentUser && currentUser.data.role==="user" ?(<div className="list">
                 <div className="current-user">
@@ -164,9 +166,11 @@ const Navbar = () => {
               </div>
             </div>
             </div>):(
+                <div>
                 <Link to="/login" className={` nav-link ${status?"shoppingcart--scroll":"shoppingcart"}`} >
                 <FontAwesomeIcon icon={faUser} size="2x" />
                 </Link>
+                </div>
                 )}
             </li>
             </ul>
