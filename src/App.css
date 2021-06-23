@@ -253,13 +253,13 @@ nav ul li {
   .navcolor{
     background-color: var(--primary-white);
   }
-  .shoppingcart{
+  /* .shoppingcart{
     display: none;
 
   }
   .shoppingcart--scroll{
     display: none;
-  }
+  } */
   .navbar-nav > li > a .badge{
     /* background: rgba(0,0,0,0.5); */
     width: auto;
