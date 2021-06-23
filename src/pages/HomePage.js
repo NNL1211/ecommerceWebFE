@@ -13,6 +13,7 @@ import BackGroundHome from '../components/form/BackGroundHome'
 import user1 from "../images/user-1.png"
 import user2 from "../images/user-2.png"
 import user3 from "../images/user-3.png"
+import sneaker from '../img/defaultimage.jpeg'
 
 const HomePage = () => {
   const [category, setCategory] = useState({});
@@ -75,7 +76,7 @@ const HomePage = () => {
           {products.map((product) => (
           <div className="col-md-3 my-5" key={product._id}>
             <Link to={`/product/${product._id}`}>
-            <img src={product.images[0].url}></img>
+            <img src={products ?product.images[0].url:sneaker}></img>
             <p className="titleh4">{product.title}</p>
             <p>${product.price}</p>
           </Link>
@@ -91,7 +92,7 @@ const HomePage = () => {
         {productwithcategory.map((product) => (
           <div className="col-md-3 mt-3" key={product._id}>
             <Link to={`/product/${product._id}`}>
-            <img src={product.images[0].url}></img>
+            <img src={productwithcategory ? product.images[0].url:sneaker}></img>
             <h4 className="titleh4">{product.title}</h4>
             <p>${product.price}</p>
           </Link>

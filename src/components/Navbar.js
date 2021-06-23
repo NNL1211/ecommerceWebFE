@@ -14,11 +14,17 @@ import 'antd/dist/antd.css';
 
 const Navbar = () => {
     const [status, setStatus] = useState("");
+    const [booleanMedia, setBooleanMedia] = useState(true);
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.user.currentUser.data);
     const { cart } = useSelector((state) => ({...state}));
     console.log("this current user",currentUser)
     const isAuth = useSelector((state) => state.auth.isAuth);
+    
+    const handleMedia = ()=>{
+      setBooleanMedia(false)
+      // console.log("hahhahaah")
+    }
     const handleLogout = () => {
         localStorage.clear();
         dispatch(authActions.logoutUser());
@@ -46,7 +52,7 @@ const Navbar = () => {
             <div className="navbar-brand navstyleleft" >
                 <Link   to="/" ><img className="logo" src={logo} alt="logo..." /></Link>
             </div>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={handleMedia}>
             <FontAwesomeIcon icon={faBars} style={{ color: "#191919" }} />
             </button>
           <div className=" navstyleright collapse navbar-collapse" id="navbarSupportedContent">
@@ -57,12 +63,39 @@ const Navbar = () => {
                 <li className="nav-item active">
                 <Link  to="/products" className="nav-link" >Products</Link>
                 </li>
-                 <li className="nav-item active">
+
+                {booleanMedia?(<><li className="nav-item active">
                 <Link  to="/" className="nav-link" >About</Link>
                 </li>
                 <li className="nav-item active">
                 <Link  to="/" className="nav-link" >Contact </Link>
+                 </li></>):isAuth && currentUser && currentUser.data.role==="user" ?(<> <li className="nav-item active">
+                <Link  to="/user/history" className="nav-link" >History</Link>
+                </li>
+                <li className="nav-item active">
+                <Link  to="/user/wishlist" className="nav-link" >WishList </Link>
                  </li>
+                 <li className="nav-item active">
+                 <Link to="/" onClick={handleLogout} className="nav-link">
+                  Logout
+                </Link>
+                 </li>
+                 </>):isAuth && currentUser && currentUser.data.role==="admin" ?(<>
+                <li className="nav-item active">
+                <Link  to="/admin/dashboard" className="nav-link" >DashBoard </Link>
+                 </li>
+                 <li className="nav-item active">
+                 <Link to="/" onClick={handleLogout} className="nav-link">
+                  Logout
+                </Link>
+                 </li>
+                 </>):(<><li className="nav-item active">
+                <Link  to="/" className="nav-link" >About</Link>
+                </li>
+                <li className="nav-item active">
+                <Link  to="/" className="nav-link" >Contact </Link>
+                 </li></>)
+                }
             </ul>
             <ul className={`navbar-nav ml-auto ${ status ? "nav--scroll " : ""}`}>
             <li className="nav-item active ">

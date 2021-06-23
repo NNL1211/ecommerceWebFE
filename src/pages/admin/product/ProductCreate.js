@@ -21,6 +21,7 @@ const ProductCreate = () => {
     // margin: 0 auto;
     // border-color: red;
     // `;
+    const [color, setColor] = useState("#666666");
     const loading = useSelector((state) => state.cloudinary.loading);
     const categoryBrands = useSelector((state)=>state.category.categories.data)
     const dispatch = useDispatch()
@@ -81,7 +82,7 @@ const ProductCreate = () => {
           </div>
         
           <div className="col-md-9 pt-2">
-              {loading?(<ClipLoader  loading={loading}  size={150} />):(
+              {loading?(<ClipLoader color={color}  loading={loading}  size={50} />):(
                 <h4>Product create</h4>)}
 
             <hr />

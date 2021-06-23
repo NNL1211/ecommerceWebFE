@@ -97,7 +97,7 @@ const ProductUpdate = () => {
           </div>
 
           <div className="col-md-10">
-              {loading?(<ClipLoader  loading={loading} size={5} />):(
+              {loading?(<ClipLoader  loading={loading} size={50} />):(
                 <h4>Product update</h4>)}
                 {/* {JSON.stringify(values)} */}
             <hr />
